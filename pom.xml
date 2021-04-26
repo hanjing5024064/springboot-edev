@@ -15,6 +15,13 @@
         <relativePath/>
     </parent>
     <dependencies>
+        <!-- Spring Boot提供的配置处理器依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
         <!-- 选择的Web模块依赖启动器 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
