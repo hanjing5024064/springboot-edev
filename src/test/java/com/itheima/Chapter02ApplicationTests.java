@@ -1,5 +1,6 @@
 package com.itheima;
 
+import com.itheima.domain.MyProperties;
 import com.itheima.domain.Person;
 import com.itheima.domain.Student;
 import org.junit.Test;
@@ -16,11 +17,14 @@ public class Chapter02ApplicationTests {
     private Person person;
     @Autowired
     private Student student;
+    @Autowired
+    private MyProperties myProperties;
 
     @Test
     public void contextLoads() {
         System.out.println(person);
         System.out.println(student);
+        System.out.println(myProperties);
     }
 
 }
