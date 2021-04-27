@@ -19,12 +19,27 @@ public class Chapter02ApplicationTests {
     private Student student;
     @Autowired
     private MyProperties myProperties;
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @Test
     public void contextLoads() {
         System.out.println(person);
+    }
+
+    @Test
+    public void studentTest() {
         System.out.println(student);
+    }
+
+    @Test
+    public void myPropertiesTest() {
         System.out.println(myProperties);
+    }
+
+    @Test
+    public void iocTest() {
+        System.out.println(applicationContext.containsBean("myService"));
     }
 
 }
