@@ -7,18 +7,17 @@
 <p>run</p>
 <p>mvn spring-boot:run</p>
 <hr>
-<p>1</p>
+<p>ch1</p>
 <artifactId>spring-boot-starter-web</artifactId><br>
 @RestController
-<hr>
-<p>2</p>
+
 <artifactId>spring-boot-starter-test</artifactId><br>
 <artifactId>spring-boot-devtools</artifactId><br>
 @RunWith(SpringRunner.class)<br>
 @SpringBootTest<br>
 @Test
 <hr>
-<p>3</p>
+<p>ch2</p>
 @Component<br>
 @ConfigurationProperties(prefix = "person") // 将配置文件中以person开头的属性注入到该类中<br>
 @Autowire<br>
@@ -31,4 +30,7 @@ application.yaml
 </p>
 <hr>
 
-<p>4</p>
+<p>ch3</p>
+<p>修改依赖后，需要右键项目-maven-reload</p>
+<p>修改类、配置文件，需要Build-rebuild project</p>
+
