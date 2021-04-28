@@ -39,3 +39,10 @@ application.yaml
 <p>ch5</p>
  <p>实现WebMvcConfigurer接口，扩展MVC功能，addViewControllers实现请求跳转，简洁。
  但无法获取后台数据，只适合五参数视图get方式的请求跳转。</p>
+ 
+<p>
+使用注册器注册servlet组件的根本目的是对一些请求路径和参数进行初始化设置和组装。
+假设没有组件注册类，那么自定义Servlet虽然生效（因为@Component把servlet注册为spring组件，会被spring扫描加载），
+但无法确定是哪个访问路径生效。自定义的Filter会队所有的请求都进行过滤，不会出现选择性过滤的情况。而自定义的Listener则没有
+太大影响，因为定制该组件基本不需要设置什么参数。
+</p>
