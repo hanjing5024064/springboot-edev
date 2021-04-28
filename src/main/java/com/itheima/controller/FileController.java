@@ -85,7 +85,7 @@ public class FileController {
     public ResponseEntity<byte[]> fileDownload(HttpServletRequest request,
                                                String filename) throws Exception{
         // 指定要下载的文件根路径
-        String dirPath = "F:/file/";
+        String dirPath = "./file/";
         // 创建该文件对象
         File file = new File(dirPath + File.separator + filename);
         // 设置响应头
