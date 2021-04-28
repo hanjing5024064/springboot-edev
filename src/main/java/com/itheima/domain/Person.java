@@ -1,85 +1,84 @@
 package com.itheima.domain;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Classname Person
  * @Description TODO
- * @Date 2019-3-1 14:45
+ * @Date 2019-3-1 16:02
  * @Created by CrazyStone
  */
-@Component    // 用于将Person类作为Bean注入到Spring容器中
-@ConfigurationProperties(prefix = "person") // 将配置文件中以person开头的属性注入到该类中
+@RedisHash("persons")  // 指定操作实体类对象在Redis数据库中的存储空间
 public class Person {
-    private int id;            //id
-    private String name;      //名称
-    private List hobby;       //爱好
-    private String[] family; //家庭成员
-    private Map map;
-    private com.itheima.domain.Pet pet;          //宠物
+    @Id        // 标识实体类主键
+    private String id;
+    @Indexed  // 标识对应属性在Redis数据库中生成二级索引
+    private String firstname;
+    @Indexed
+    private String lastname;
+    private Address address;
+    private List<Family> familyList;
 
-    public int getId() {
+    public Person() {
+    }
+
+    public Person(String firstname, String lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public List getHobby() {
-        return hobby;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setHobby(List hobby) {
-        this.hobby = hobby;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String[] getFamily() {
-        return family;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setFamily(String[] family) {
-        this.family = family;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public Map getMap() {
-        return map;
+    public List<Family> getFamilyList() {
+        return familyList;
     }
 
-    public void setMap(Map map) {
-        this.map = map;
-    }
-
-    public com.itheima.domain.Pet getPet() {
-        return pet;
-    }
-
-    public void setPet(com.itheima.domain.Pet pet) {
-        this.pet = pet;
+    public void setFamilyList(List<Family> familyList) {
+        this.familyList = familyList;
     }
 
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", hobby=" + hobby +
-                ", family=" + Arrays.toString(family) +
-                ", map=" + map +
-                ", pet=" + pet +
+                "id='" + id + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", address=" + address +
+                ", familyList=" + familyList +
                 '}';
     }
 }

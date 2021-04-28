@@ -47,6 +47,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Spring Data Redis依赖启动器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
         <!-- Spring Data JPA依赖启动器 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
