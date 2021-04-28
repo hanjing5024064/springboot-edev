@@ -46,3 +46,9 @@ application.yaml
 但无法确定是哪个访问路径生效。自定义的Filter会队所有的请求都进行过滤，不会出现选择性过滤的情况。而自定义的Listener则没有
 太大影响，因为定制该组件基本不需要设置什么参数。
 </p>
+<p>
+@ServletComponentScan // 开启基于注解方式的Servlet组件扫描支持
+@WebFilter(value = {"/antionLogin","/antionMyFilter"})
+@WebListener
+@WebServlet("/annotationServlet")
+</p>
