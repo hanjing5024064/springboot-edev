@@ -16,6 +16,11 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
         <!-- Spring Boot提供的配置处理器依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
