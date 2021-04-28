@@ -15,7 +15,17 @@
         <relativePath/>
     </parent>
 
+    <!-- 1、将项目打包方式声明为war  -->
+    <packaging>war</packaging>
+
     <dependencies>
+        <!-- 2、声明使用外部提供的Tomcat  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- 进行文件下载的工具依赖 -->
         <dependency>
             <groupId>commons-io</groupId>
