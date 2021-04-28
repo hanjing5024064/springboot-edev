@@ -96,6 +96,7 @@
 
     <build>
         <plugins>
+
             <!-- Maven打包工具插件 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
