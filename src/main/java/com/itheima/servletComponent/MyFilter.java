@@ -9,8 +9,8 @@ import java.io.IOException;
 /**
  *  自定义Filter类
  */
-//@WebFilter(value = {"/antionLogin","/antionMyFilter"})
-@Component
+@WebFilter(value = {"/antionLogin","/antionMyFilter"})
+//@Component
 public class MyFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

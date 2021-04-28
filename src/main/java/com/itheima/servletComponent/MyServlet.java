@@ -12,7 +12,8 @@ import java.io.IOException;
 /**
  * 自定义Servlet类
  */
-@Component
+@WebServlet("/annotationServlet")
+//@Component
 public class MyServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

@@ -10,8 +10,8 @@ import javax.servlet.annotation.WebListener;
 /**
  *  自定义Listener类
  */
-//@WebListener
-@Component
+@WebListener
+//@Component
 public class MyListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
