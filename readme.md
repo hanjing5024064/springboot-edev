@@ -34,3 +34,4 @@ application.yaml
 <p>修改依赖后，需要右键项目-maven-reload</p>
 <p>修改类、配置文件，需要Build-rebuild project</p>
 
+<p>删除Run/Edit Configurations and Maven-reload</p>
