@@ -1,9 +1,13 @@
 package com.itheima.config;
 
+import com.itheima.servletComponent.MyFilter;
 import com.itheima.servletComponent.MyServlet;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Arrays;
 
 /**
  * 嵌入式Servlet容器三大组件配置
@@ -17,5 +21,13 @@ public class ServletConfig {
                 new ServletRegistrationBean(myServlet,"/myServlet");
         return registrationBean;
     }
-}
 
+    // 注册Filter组件
+    @Bean
+    public FilterRegistrationBean getFilter(MyFilter filter){
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean(filter);
+        registrationBean.setUrlPatterns(Arrays.asList("/toLoginPage","/myFilter"));
+        return registrationBean;
+    }
+
+}
