@@ -35,3 +35,7 @@ application.yaml
 <p>修改类、配置文件，需要Build-rebuild project</p>
 
 <p>删除Run/Edit Configurations and Maven-reload</p>
+
+<p>ch5</p>
+ <p>实现WebMvcConfigurer接口，扩展MVC功能，addViewControllers实现请求跳转，简洁。
+ 但无法获取后台数据，只适合五参数视图get方式的请求跳转。</p>
