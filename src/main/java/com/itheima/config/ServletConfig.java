@@ -1,8 +1,10 @@
 package com.itheima.config;
 
 import com.itheima.servletComponent.MyFilter;
+import com.itheima.servletComponent.MyListener;
 import com.itheima.servletComponent.MyServlet;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +29,13 @@ public class ServletConfig {
     public FilterRegistrationBean getFilter(MyFilter filter){
         FilterRegistrationBean registrationBean = new FilterRegistrationBean(filter);
         registrationBean.setUrlPatterns(Arrays.asList("/toLoginPage","/myFilter"));
+        return registrationBean;
+    }
+
+    // 注册Listener组件
+    @Bean
+    public ServletListenerRegistrationBean getServletListener(MyListener myListener){
+        ServletListenerRegistrationBean registrationBean = new ServletListenerRegistrationBean(myListener);
         return registrationBean;
     }
 
