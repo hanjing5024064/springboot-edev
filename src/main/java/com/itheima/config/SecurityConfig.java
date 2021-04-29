@@ -1,5 +1,6 @@
 package com.itheima.config;
 
+import com.itheima.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.*;
 import org.springframework.security.config.annotation.web.configuration.*;
@@ -18,6 +19,8 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
 
     /**
          * 用户身份认证自定义配置
@@ -35,18 +38,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .withUser("李四").password(encoder.encode("123456")).roles("vip");
 
         // 2、使用JDBC进行身份认证
-        String userSQL ="select username,password,valid from t_customer " +
-                "where username = ?";
-        String authoritySQL="select c.username,a.authority from t_customer c,t_authority a,"+
-                "t_customer_authority ca where ca.customer_id=c.id " +
-                "and ca.authority_id=a.id and c.username =?";
-        auth.jdbcAuthentication().passwordEncoder(encoder)
-                .dataSource(dataSource)
-                .usersByUsernameQuery(userSQL)
-                .authoritiesByUsernameQuery(authoritySQL);
+//        String userSQL ="select username,password,valid from t_customer " +
+//                "where username = ?";
+//        String authoritySQL="select c.username,a.authority from t_customer c,t_authority a,"+
+//                "t_customer_authority ca where ca.customer_id=c.id " +
+//                "and ca.authority_id=a.id and c.username =?";
+//        auth.jdbcAuthentication().passwordEncoder(encoder)
+//                .dataSource(dataSource)
+//                .usersByUsernameQuery(userSQL)
+//                .authoritiesByUsernameQuery(authoritySQL);
 
-        // 3、使用UserDetailsService进行身份认证
-//        auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
+//         3、使用UserDetailsService进行身份认证
+        auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
     }
 
 }
