@@ -2,11 +2,13 @@ package com.itheima.config;
 
 import com.itheima.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 
 import javax.sql.DataSource;
 
@@ -54,7 +56,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // 定制Remember-me记住我功能
         http.rememberMe()
                 .rememberMeParameter("rememberme")
-                .tokenValiditySeconds(200);//token有效200s
+                .tokenValiditySeconds(200)//token有效200s
+                // 对cookie信息进行持久化管理
+                .tokenRepository(tokenRepository());
+    }
+
+    /**
+     * 持久化Token存储
+     * @return
+     */
+    @Bean
+    public JdbcTokenRepositoryImpl tokenRepository(){
+        JdbcTokenRepositoryImpl jr=new JdbcTokenRepositoryImpl();
+        jr.setDataSource(dataSource);
+        return jr;
     }
 
     /**
