@@ -3,6 +3,7 @@ package com.itheima.config;
 import com.itheima.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.*;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +22,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private DataSource dataSource;
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
+
+    /**
+     * 用户授权管理自定义配置
+     * @param http
+     * @throws Exception
+     */
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        // 自定义用户授权管理
+        http.authorizeRequests()
+                .antMatchers("/").permitAll()
+                // 需要对static文件夹下静态资源进行统一放行
+                .antMatchers("/login/**").permitAll()
+                .antMatchers("/detail/common/**").hasRole("common")
+                .antMatchers("/detail/vip/**").hasRole("vip")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin();
+    }
 
     /**
          * 用户身份认证自定义配置
