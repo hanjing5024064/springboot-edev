@@ -19,6 +19,12 @@
     <packaging>war</packaging>
 
     <dependencies>
+        <!-- Spring Security提供的安全管理依赖启动器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
         <!-- 2、声明使用外部提供的Tomcat  -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
