@@ -19,6 +19,12 @@
     <packaging>war</packaging>
 
     <dependencies>
+        <!-- Security与Thymeleaf整合实现前端页面安全访问控制 -->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+        </dependency>
+
         <!-- Spring Security提供的安全管理依赖启动器 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
