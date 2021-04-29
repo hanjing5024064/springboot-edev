@@ -50,6 +50,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.logout()
                 .logoutUrl("/mylogout")
                 .logoutSuccessUrl("/");
+
+        // 定制Remember-me记住我功能
+        http.rememberMe()
+                .rememberMeParameter("rememberme")
+                .tokenValiditySeconds(200);//token有效200s
     }
 
     /**
