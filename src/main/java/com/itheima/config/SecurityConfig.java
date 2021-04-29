@@ -37,9 +37,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login/**").permitAll()
                 .antMatchers("/detail/common/**").hasRole("common")
                 .antMatchers("/detail/vip/**").hasRole("vip")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin();
+                .anyRequest().authenticated();
+
+        // 自定义用户登录控制
+        http.formLogin()
+                .loginPage("/userLogin").permitAll()
+                .usernameParameter("name").passwordParameter("pwd")
+                .defaultSuccessUrl("/")
+                .failureUrl("/userLogin?error");
+
+        // 自定义用户退出控制
+        http.logout()
+                .logoutUrl("/mylogout")
+                .logoutSuccessUrl("/");
     }
 
     /**
