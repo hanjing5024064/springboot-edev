@@ -52,3 +52,8 @@ application.yaml
 @WebListener
 @WebServlet("/annotationServlet")
 </p>
+
+<p>ch6</p>
+<p>
+SpringBoot开启缓存后会自动选择并启用缓存组件：Generic-JCache-EhCache-Hazelcast-Infinispan-Couchbase-Redis-Caffeine-Simple
+</p>
