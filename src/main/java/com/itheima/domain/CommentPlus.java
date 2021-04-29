@@ -1,6 +1,7 @@
 package com.itheima.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @Classname Comment
@@ -9,7 +10,7 @@ import javax.persistence.*;
  * @Created by CrazyStone
  */
 @Entity(name = "t_ch6_comment")  // 设置ORM实体类，并指定映射的表名
-public class CommentPlus {
+public class CommentPlus implements Serializable{
     @Id   // 表明映射对应的主键id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 设置主键自增策略
     private Integer id;

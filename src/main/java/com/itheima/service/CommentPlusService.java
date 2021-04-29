@@ -23,8 +23,8 @@ public class CommentPlusService {
     private CommentPlusRepository commentRepository;
 
     // 根据评论id查询评论信息
-//    @Cacheable(cacheNames = "comment")
-    @Cacheable(cacheNames = "comment",unless = "#result==null")
+    @Cacheable(cacheNames = "comment")
+//    @Cacheable(cacheNames = "comment",unless = "#result==null")
     public CommentPlus findById(int comment_id){
         Optional<CommentPlus> optional = commentRepository.findById(comment_id);
         if(optional.isPresent()){
