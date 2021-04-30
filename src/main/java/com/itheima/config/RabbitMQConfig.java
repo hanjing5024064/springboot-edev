@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
     /**
-     * 定制JSON格式的消息转换器
+     * 定制JSON格式的消息转换器，将消息序列化
      * @return
      */
     @Bean
