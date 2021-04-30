@@ -53,6 +53,18 @@ public class Chapter08ApplicationTests {
         rabbitTemplate.convertAndSend("routing_exchange","error_routing_key","routing send error message");
     }
 
+    /**
+     *	3、Topcis工作模式消息发送端
+     */
+    @Test
+    public void topicPublisher() {
+        // 1、只发送邮件订阅用户消息
+//        rabbitTemplate.convertAndSend("topic_exchange","info.email","topics send  email message");
+        // 2、只发送短信订阅用户消息
+//	    rabbitTemplate.convertAndSend("topic_exchange","info.sms","topics send  sms message");
+        // 3、发送同时订阅邮件和短信的用户消息
+        rabbitTemplate.convertAndSend("topic_exchange","info.email.sms","topics send  email and sms message");
+    }
 }
 
 

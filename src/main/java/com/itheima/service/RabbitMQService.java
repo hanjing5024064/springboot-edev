@@ -70,4 +70,21 @@ public class RabbitMQService {
     public void routingConsumerAll(String message) {
         System.out.println("接收到info、error、warning等级别日志消息： "+message);
     }
+
+    /**
+     *  3.1、通配符模式消息接收，进行邮件业务订阅处理
+     * @param message
+     */
+    @RabbitListener(bindings =@QueueBinding(value =@Queue("topic_queue_email"),exchange =@Exchange(value = "topic_exchange",type = "topic"),key = "info.#.email.#"))
+    public void topicConsumerEmail(String message) {
+        System.out.println("接收到邮件订阅需求处理消息： "+message);
+    }
+    /**
+     *  3.2、通配符模式消息接收，进行短信业务订阅处理
+     * @param message
+     */
+    @RabbitListener(bindings =@QueueBinding(value =@Queue("topic_queue_sms"),exchange =@Exchange(value = "topic_exchange",type = "topic"),key = "info.#.sms.#"))
+    public void topicConsumerSms(String message) {
+        System.out.println("接收到短信订阅需求处理消息： "+message);
+    }
 }
