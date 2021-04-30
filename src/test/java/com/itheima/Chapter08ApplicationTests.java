@@ -45,6 +45,14 @@ public class Chapter08ApplicationTests {
         rabbitTemplate.convertAndSend("fanout_exchange","",user);
     }
 
+    /**
+     *	2、Routing工作模式消息发送端
+     */
+    @Test
+    public void routingPublisher() {
+        rabbitTemplate.convertAndSend("routing_exchange","error_routing_key","routing send error message");
+    }
+
 }
 
 
