@@ -19,6 +19,12 @@
     <packaging>war</packaging>
 
     <dependencies>
+        <!-- RabbitMQ管理接口启动器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
         <!-- Security与Thymeleaf整合实现前端页面安全访问控制 -->
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
