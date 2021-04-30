@@ -16,12 +16,11 @@ public class RabbitMQService {
      * Publish/Subscribe工作模式接收，处理邮件业务
      * @param message
      */
-    @RabbitListener(queues = "fanout_queue_email")
+    @RabbitListener(queues = "fanout_queue_email")//也可以使用RabbitTemplate的receiveSendAndConvert()
     public void psubConsumerEmail(Message message) {
         byte[] body = message.getBody();
         String s = new String(body);
         System.out.println("邮件业务接收到消息： "+s);
-
     }
     /**
      * Publish/Subscribe工作模式接收，处理短信业务
