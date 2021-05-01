@@ -83,4 +83,28 @@ public class SendEmailService {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 发送模板邮件
+     * @param to       收件人地址
+     * @param subject  邮件标题
+     * @param content  邮件内容
+     */
+    public void sendTemplateEmail(String to, String subject, String content) {
+        MimeMessage message = mailSender.createMimeMessage();
+        try {
+            // 使用MimeMessageHelper帮助类，并设置multipart多部件使用为true
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setFrom(from);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(content, true);
+            // 发送邮件
+            mailSender.send(message);
+            System.out.println("模板邮件发送成功");
+        } catch (MessagingException e) {
+            System.out.println("模板邮件发送失败 "+e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }

@@ -6,12 +6,16 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class Chapter09ApplicationTests {
     @Autowired
     private SendEmailService sendEmailService;
+    @Autowired
+    private TemplateEngine templateEngine;
 
     @Test
     public void sendSimpleMailTest() {
@@ -39,5 +43,19 @@ public class Chapter09ApplicationTests {
         String filePath="\\email\\元旦放假注意事项.docx";
         // 发送复杂邮件
         sendEmailService.sendComplexEmail(to,subject,text.toString(),filePath,rscId,rscPath);
+    }
+
+    @Test
+    public void sendTemplateEmailTest() {
+        String to="5024064@qq.com";
+        String subject="【模板邮件】标题-张宸铭你好";
+        // 使用模板邮件定制邮件正文内容
+        Context context = new Context();
+        context.setVariable("username", "小张");
+        context.setVariable("code", "456123");
+        // 使用TemplateEngine设置要处理的模板页面
+        String emailContent = templateEngine.process("emailTemplate_vercode", context);
+        // 发送模板邮件
+        sendEmailService.sendTemplateEmail(to,subject,emailContent);
     }
 }
