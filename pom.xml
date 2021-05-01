@@ -19,6 +19,12 @@
     <packaging>war</packaging>
 
     <dependencies>
+        <!-- 邮件服务依赖启动器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
         <!-- RabbitMQ管理接口启动器 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
